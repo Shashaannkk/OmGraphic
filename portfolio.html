@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio | OM GRAPHICS Commercial Printing Press Mumbai</title>
+    <meta name="description" content="View printed projects by OM GRAPHICS. Explore folding cartons, pharma blister cards, corporate booklets, calendars, and point of sale materials produced at our Mumbai plant.">
+    <meta name="robots" content="index, follow">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
+</head>
+<body>
+
+    <!-- BACKGROUND -->
+    <div class="background" aria-hidden="true">
+        <div class="circle circle1"></div>
+        <div class="circle circle2"></div>
+        <div class="particles">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </div>
+
+    <!-- Header & Navigation -->
+    <header class="header">
+        <div class="container">
+            <a href="index.html" class="logo-link" aria-label="OM GRAPHICS Home">
+                <svg class="logo-svg" viewBox="0 0 250 80" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                    <defs>
+                        <linearGradient id="dropGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stop-color="#5D2D91" />
+                            <stop offset="35%" stop-color="#009E5A" />
+                            <stop offset="70%" stop-color="#F37021" />
+                            <stop offset="100%" stop-color="#1C3B88" />
+                        </linearGradient>
+                        <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
+                            <feDropShadow dx="1" dy="2" stdDeviation="2" flood-color="#1C3B88" flood-opacity="0.3"/>
+                        </filter>
+                    </defs>
+                    <g transform="translate(10, -5) scale(0.95)" filter="url(#shadow)">
+                        <path d="M 28,22 C 22,22 17,27 17,32 C 17,37 20,40 24,40 C 28,40 31,37 31,34 C 31,30 27,27 24,29 C 23,30 22,31 22,32 C 22,32 23,32 23,32 C 25,32 27,34 26,36 C 25,38 22,37 22,34 C 22,29 27,25 32,25 C 37,25 41,29 41,34 C 41,39 37,42 34,44 L 34,47 C 38,47 42,43 45,40 C 47,38 49,36 50,33 C 51,30 51,26 49,23 C 47,19 41,16 35,16 C 30,16 26,18 24,20" fill="#5D2D91" />
+                        <path d="M 31,45 C 29,48 26,51 22,51 C 18,51 15,48 15,44 C 15,40 18,37 22,37 C 24,37 26,38 27,40" stroke="#1C3B88" stroke-width="1.5" fill="none" />
+                        <path d="M 34,44 C 31,47 28,52 28,58 C 28,64 32,68 37,68 C 42,68 46,63 46,57 C 46,53 43,49 40,47" fill="#009E5A" />
+                        <path d="M 25,12 C 28,12 30,10 30,7 C 30,4 28,2 25,2 C 22,2 20,4 20,7 C 20,10 22,12 25,12 Z" fill="#F37021" />
+                        <path d="M 22,15 C 24,17 26,17 28,15" stroke="#5D2D91" stroke-width="2" fill="none" />
+                    </g>
+                    <text x="65" y="44" font-family="'Outfit', sans-serif" font-size="28" font-weight="800" fill="#5D2D91">OM GRAPHICS</text>
+                    <text x="66" y="60" font-family="'Inter', sans-serif" font-size="8.5" font-weight="700" fill="#009E5A" letter-spacing="1.5">EXCELLENCE IN OFF-SET PRINTING</text>
+                </svg>
+            </a>
+
+            <nav class="nav-menu" id="navMenu" role="navigation" aria-label="Main navigation">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="about.html" class="nav-link">About Us</a>
+                <a href="services.html" class="nav-link">Services</a>
+                <a href="portfolio.html" class="nav-link active" aria-current="page">Portfolio</a>
+                <a href="contact.html" class="nav-link">Contact</a>
+            </nav>
+
+            <div class="nav-actions">
+                <label class="theme-switch" for="themeToggle" aria-label="Toggle dark mode">
+                    <input type="checkbox" id="themeToggle">
+                    <span class="slider">
+                        <i class="fas fa-sun slider-icon" aria-hidden="true"></i>
+                        <i class="fas fa-moon slider-icon" aria-hidden="true"></i>
+                    </span>
+                </label>
+                <a href="quote.html" class="btn btn-primary" style="padding: 8px 20px; font-size: 0.88rem;">Instant Quote</a>
+                <button class="hamburger" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="navMenu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Page Banner -->
+    <section class="page-banner">
+        <div class="container">
+            <span class="section-subtitle">Our Work</span>
+            <h1>Our Printed Works</h1>
+            <p>Browse physical mockups and final production runs executed inside our plant in Mumbai. Every piece reflects our commitment to precision and quality.</p>
+        </div>
+    </section>
+
+    <!-- Project Gallery -->
+    <section class="section" style="background-color: var(--bg-secondary);">
+        <div class="container">
+            <!-- Filter Tabs -->
+            <div class="machinery-tabs" id="portfolioFilters" role="tablist" aria-label="Portfolio category filters">
+                <button class="tab-btn active" data-filter="all" role="tab" aria-selected="true">All Projects</button>
+                <button class="tab-btn" data-filter="pub" role="tab" aria-selected="false">Publications</button>
+                <button class="tab-btn" data-filter="pack" role="tab" aria-selected="false">Packaging</button>
+                <button class="tab-btn" data-filter="corp" role="tab" aria-selected="false">Corporate</button>
+            </div>
+
+            <!-- Portfolio Grid -->
+            <div class="portfolio-grid" id="portfolioGrid">
+                
+                <!-- Project 1 -->
+                <article class="portfolio-item glass-card" data-category="pub" aria-label="Product Catalogues - Publications">
+                    <div class="portfolio-img-box" style="background: linear-gradient(135deg, rgba(93, 45, 145, 0.12), rgba(28, 59, 136, 0.08));">
+                        <i class="fas fa-book-open fa-3x" style="opacity:0.25; color:var(--clr-purple);" aria-hidden="true"></i>
+                    </div>
+                    <div class="portfolio-info">
+                        <span class="portfolio-item-cat">Publications</span>
+                        <h2 class="portfolio-item-title">Product Catalogues</h2>
+                        <p style="font-size: 0.82rem; color: var(--text-secondary); margin: 6px 0 0;">Multi-page art paper catalog with saddle-stitch binding</p>
+                    </div>
+                </article>
+
+                <!-- Project 2 -->
+                <article class="portfolio-item glass-card" data-category="pack" aria-label="Folding Mono Cartons - Packaging">
+                    <div class="portfolio-img-box" style="background: linear-gradient(135deg, rgba(0, 158, 90, 0.12), rgba(28, 59, 136, 0.08));">
+                        <i class="fas fa-box fa-3x" style="opacity:0.25; color:var(--clr-green);" aria-hidden="true"></i>
+                    </div>
+                    <div class="portfolio-info">
+                        <span class="portfolio-item-cat">Packaging</span>
+                        <h2 class="portfolio-item-title">Folding Mono Cartons</h2>
+                        <p style="font-size: 0.82rem; color: var(--text-secondary); margin: 6px 0 0;">SBS board cartons with matt lamination &amp; die-cut</p>
+                    </div>
+                </article>
+
+                <!-- Project 3 -->
+                <article class="portfolio-item glass-card" data-category="corp" aria-label="Custom Desk Calendars - Corporate">
+                    <div class="portfolio-img-box" style="background: linear-gradient(135deg, rgba(243, 112, 33, 0.12), rgba(28, 59, 136, 0.08));">
+                        <i class="fas fa-calendar fa-3x" style="opacity:0.25; color:var(--clr-orange);" aria-hidden="true"></i>
+                    </div>
+                    <div class="portfolio-info">
+                        <span class="portfolio-item-cat">Corporate</span>
+                        <h2 class="portfolio-item-title">Custom Desk Calendars</h2>
+                        <p style="font-size: 0.82rem; color: var(--text-secondary); margin: 6px 0 0;">Metal wiro-bound desk calendars for corporate gifting</p>
+                    </div>
+                </article>
+
+                <!-- Project 4 -->
+                <article class="portfolio-item glass-card" data-category="pack" aria-label="Pharmaceutical Blister Cards - Packaging">
+                    <div class="portfolio-img-box" style="background: linear-gradient(135deg, rgba(0, 158, 90, 0.12), rgba(93, 45, 145, 0.08));">
+                        <i class="fas fa-address-card fa-3x" style="opacity:0.25; color:var(--clr-green);" aria-hidden="true"></i>
+                    </div>
+                    <div class="portfolio-info">
+                        <span class="portfolio-item-cat">Packaging</span>
+                        <h2 class="portfolio-item-title">Pharmaceutical Blister Cards</h2>
+                        <p style="font-size: 0.82rem; color: var(--text-secondary); margin: 6px 0 0;">Heat-seal backing cards for pill packs &amp; consumer goods</p>
+                    </div>
+                </article>
+
+                <!-- Project 5 -->
+                <article class="portfolio-item glass-card" data-category="pub" aria-label="Textile Shade Cards - Publications">
+                    <div class="portfolio-img-box" style="background: linear-gradient(135deg, rgba(93, 45, 145, 0.12), rgba(243, 112, 33, 0.08));">
+                        <i class="fas fa-palette fa-3x" style="opacity:0.25; color:var(--clr-purple);" aria-hidden="true"></i>
+                    </div>
+                    <div class="portfolio-info">
+                        <span class="portfolio-item-cat">Publications</span>
+                        <h2 class="portfolio-item-title">Textile &amp; Cosmetic Shade Cards</h2>
+                        <p style="font-size: 0.82rem; color: var(--text-secondary); margin: 6px 0 0;">Accurate color-match cards with swatch swatches</p>
+                    </div>
+                </article>
+
+                <!-- Project 6 -->
+                <article class="portfolio-item glass-card" data-category="corp" aria-label="Gusseted Document Folders - Corporate">
+                    <div class="portfolio-img-box" style="background: linear-gradient(135deg, rgba(28, 59, 136, 0.12), rgba(243, 112, 33, 0.08));">
+                        <i class="fas fa-folder fa-3x" style="opacity:0.25; color:var(--clr-blue);" aria-hidden="true"></i>
+                    </div>
+                    <div class="portfolio-info">
+                        <span class="portfolio-item-cat">Corporate</span>
+                        <h2 class="portfolio-item-title">Gusseted Document Folders</h2>
+                        <p style="font-size: 0.82rem; color: var(--text-secondary); margin: 6px 0 0;">Gusseted custom pocket folders for A4 document kits</p>
+                    </div>
+                </article>
+
+                <!-- Project 7 -->
+                <article class="portfolio-item glass-card" data-category="pub" aria-label="Medical Visual Aids - Publications">
+                    <div class="portfolio-img-box" style="background: linear-gradient(135deg, rgba(93, 45, 145, 0.08), rgba(0, 158, 90, 0.12));">
+                        <i class="fas fa-briefcase-medical fa-3x" style="opacity:0.25; color:var(--clr-purple);" aria-hidden="true"></i>
+                    </div>
+                    <div class="portfolio-info">
+                        <span class="portfolio-item-cat">Publications</span>
+                        <h2 class="portfolio-item-title">Medical Visual Aids</h2>
+                        <p style="font-size: 0.82rem; color: var(--text-secondary); margin: 6px 0 0;">Spiral-bound easel charts &amp; detail books for field representatives</p>
+                    </div>
+                </article>
+
+                <!-- Project 8 -->
+                <article class="portfolio-item glass-card" data-category="corp" aria-label="Invitation Cards - Corporate">
+                    <div class="portfolio-img-box" style="background: linear-gradient(135deg, rgba(243, 112, 33, 0.12), rgba(93, 45, 145, 0.08));">
+                        <i class="fas fa-envelope-open-text fa-3x" style="opacity:0.25; color:var(--clr-orange);" aria-hidden="true"></i>
+                    </div>
+                    <div class="portfolio-info">
+                        <span class="portfolio-item-cat">Corporate</span>
+                        <h2 class="portfolio-item-title">Luxury Invitation Cards</h2>
+                        <p style="font-size: 0.82rem; color: var(--text-secondary); margin: 6px 0 0;">Custom-cut event invites with foil blocking &amp; embossing</p>
+                    </div>
+                </article>
+
+                <!-- Project 9 -->
+                <article class="portfolio-item glass-card" data-category="pack" aria-label="Retail Danglers - Packaging">
+                    <div class="portfolio-img-box" style="background: linear-gradient(135deg, rgba(28, 59, 136, 0.12), rgba(0, 158, 90, 0.08));">
+                        <i class="fas fa-bookmark fa-3x" style="opacity:0.25; color:var(--clr-blue);" aria-hidden="true"></i>
+                    </div>
+                    <div class="portfolio-info">
+                        <span class="portfolio-item-cat">Packaging</span>
+                        <h2 class="portfolio-item-title">Retail Danglers &amp; POSM</h2>
+                        <p style="font-size: 0.82rem; color: var(--text-secondary); margin: 6px 0 0;">Double-sided die-cut danglers for point-of-sale displays</p>
+                    </div>
+                </article>
+
+            </div>
+
+            <!-- No results message (hidden by default) -->
+            <div id="noResults" style="display:none; text-align:center; padding: 60px 20px; color: var(--text-secondary);">
+                <i class="fas fa-search fa-2x" style="margin-bottom: 16px; opacity: 0.4;" aria-hidden="true"></i>
+                <p>No projects found in this category.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="section" style="background: linear-gradient(135deg, rgba(93,45,145,0.05), rgba(0,158,90,0.04));">
+        <div class="container text-center reveal">
+            <span class="section-subtitle">Ready to Create?</span>
+            <h2 class="section-title" style="max-width: 500px; margin: 16px auto 20px;">Let's Print Something Extraordinary</h2>
+            <p style="color: var(--text-secondary); max-width: 480px; margin: 0 auto 32px; line-height: 1.7;">From first concept to final delivery, our team is ready to bring your print project to life with uncompromising quality.</p>
+            <div style="display: flex; justify-content: center; gap: 16px; flex-wrap: wrap;">
+                <a href="quote.html" class="btn btn-primary"><i class="fas fa-calculator" aria-hidden="true"></i> Get Instant Quote</a>
+                <a href="contact.html" class="btn btn-outline"><i class="fas fa-phone-alt" aria-hidden="true"></i> Contact Us</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="grid footer-grid">
+                <div>
+                    <h3 style="margin-bottom: 16px; font-family: var(--font-heading);">OM GRAPHICS</h3>
+                    <p class="footer-brand-desc">Excellence in commercial sheet-fed offset and digital printing since 1996.</p>
+                    <div class="footer-social">
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin" aria-hidden="true"></i></a>
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook" aria-hidden="true"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram" aria-hidden="true"></i></a>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="footer-col-title">Navigation</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html" class="footer-link">Home</a></li>
+                        <li><a href="about.html" class="footer-link">About Us</a></li>
+                        <li><a href="services.html" class="footer-link">Services</a></li>
+                        <li><a href="portfolio.html" class="footer-link">Portfolio</a></li>
+                        <li><a href="contact.html" class="footer-link">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="footer-col-title">Quick Quote</h4>
+                    <ul class="footer-links">
+                        <li><a href="quote.html" class="footer-link">AI Quote Fill</a></li>
+                        <li><a href="quote.html" class="footer-link">Brochure Estimator</a></li>
+                        <li><a href="quote.html" class="footer-link">Carton Estimator</a></li>
+                        <li><a href="quote.html" class="footer-link">Leaflet Estimator</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="footer-col-title">Corporate Plant</h4>
+                    <address class="footer-address">
+                        220, New Sonal Link Ind Estate,<br>
+                        Near Movie Time Cinema, Link Rd,<br>
+                        Kachpada, Malad (W), Mumbai – 400064<br>
+                        <strong>Phone:</strong> <a href="tel:+912228801042" style="color: inherit;">28801042</a> / <a href="tel:+912228803073" style="color: inherit;">3073</a><br>
+                        <strong>WhatsApp:</strong> <a href="https://wa.me/919930264933" style="color: inherit;" target="_blank" rel="noopener noreferrer">+91 99302 64933</a>
+                    </address>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p class="footer-copyright">© 2026 OM GRAPHICS. All rights reserved. Registered Commercial Printing Vendor.</p>
+                <div class="footer-bottom-links">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating WhatsApp -->
+    <a href="https://wa.me/919930264933" class="floating-whatsapp" aria-label="Chat on WhatsApp" target="_blank" rel="noopener noreferrer">
+        <i class="fab fa-whatsapp" aria-hidden="true"></i>
+    </a>
+
+    <script src="js/main.js"></script>
+    <script src="js/assistant.js" defer></script>
+</body>
+</html>

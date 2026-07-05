@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instant Printing Quote | OM GRAPHICS Mumbai</title>
+    <meta name="description" content="Generate instant B2B printing quotes for catalogues, folding cartons, leaflets, and stationery using OM GRAPHICS' AI Auto-fill calculator.">
+    <meta name="robots" content="index, follow">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
+</head>
+<body>
+
+    <!-- BACKGROUND -->
+    <div class="background" aria-hidden="true">
+        <div class="circle circle1"></div>
+        <div class="circle circle2"></div>
+        <div class="particles">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </div>
+
+    <!-- Header & Navigation -->
+    <header class="header">
+        <div class="container">
+            <a href="index.html" class="logo-link" aria-label="OM GRAPHICS Home">
+                <svg class="logo-svg" viewBox="0 0 250 80" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                    <defs>
+                        <linearGradient id="dropGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stop-color="#5D2D91" />
+                            <stop offset="35%" stop-color="#009E5A" />
+                            <stop offset="70%" stop-color="#F37021" />
+                            <stop offset="100%" stop-color="#1C3B88" />
+                        </linearGradient>
+                        <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
+                            <feDropShadow dx="1" dy="2" stdDeviation="2" flood-color="#1C3B88" flood-opacity="0.3"/>
+                        </filter>
+                    </defs>
+                    <g transform="translate(10, -5) scale(0.95)" filter="url(#shadow)">
+                        <path d="M 28,22 C 22,22 17,27 17,32 C 17,37 20,40 24,40 C 28,40 31,37 31,34 C 31,30 27,27 24,29 C 23,30 22,31 22,32 C 22,32 23,32 23,32 C 25,32 27,34 26,36 C 25,38 22,37 22,34 C 22,29 27,25 32,25 C 37,25 41,29 41,34 C 41,39 37,42 34,44 L 34,47 C 38,47 42,43 45,40 C 47,38 49,36 50,33 C 51,30 51,26 49,23 C 47,19 41,16 35,16 C 30,16 26,18 24,20" fill="#5D2D91" />
+                        <path d="M 31,45 C 29,48 26,51 22,51 C 18,51 15,48 15,44 C 15,40 18,37 22,37 C 24,37 26,38 27,40" stroke="#1C3B88" stroke-width="1.5" fill="none" />
+                        <path d="M 34,44 C 31,47 28,52 28,58 C 28,64 32,68 37,68 C 42,68 46,63 46,57 C 46,53 43,49 40,47" fill="#009E5A" />
+                        <path d="M 25,12 C 28,12 30,10 30,7 C 30,4 28,2 25,2 C 22,2 20,4 20,7 C 20,10 22,12 25,12 Z" fill="#F37021" />
+                        <path d="M 22,15 C 24,17 26,17 28,15" stroke="#5D2D91" stroke-width="2" fill="none" />
+                    </g>
+                    <text x="65" y="44" font-family="'Outfit', sans-serif" font-size="28" font-weight="800" fill="#5D2D91">OM GRAPHICS</text>
+                    <text x="66" y="60" font-family="'Inter', sans-serif" font-size="8.5" font-weight="700" fill="#009E5A" letter-spacing="1.5">EXCELLENCE IN OFF-SET PRINTING</text>
+                </svg>
+            </a>
+
+            <nav class="nav-menu" id="navMenu" role="navigation" aria-label="Main navigation">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="about.html" class="nav-link">About Us</a>
+                <a href="services.html" class="nav-link">Services</a>
+                <a href="portfolio.html" class="nav-link">Portfolio</a>
+                <a href="contact.html" class="nav-link">Contact</a>
+            </nav>
+
+            <div class="nav-actions">
+                <label class="theme-switch" for="themeToggle" aria-label="Toggle dark mode">
+                    <input type="checkbox" id="themeToggle">
+                    <span class="slider">
+                        <i class="fas fa-sun slider-icon" aria-hidden="true"></i>
+                        <i class="fas fa-moon slider-icon" aria-hidden="true"></i>
+                    </span>
+                </label>
+                <a href="quote.html" class="btn btn-primary" style="padding: 8px 20px; font-size: 0.88rem;" aria-current="page">Instant Quote</a>
+                <button class="hamburger" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="navMenu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Page Banner -->
+    <section class="page-banner">
+        <div class="container">
+            <span class="section-subtitle">Price Calculator</span>
+            <h1>B2B Print Price Estimator</h1>
+            <p>Configure your print specifications below to calculate an instant cost estimate for your project. All prices include standard GST of 18%.</p>
+        </div>
+    </section>
+
+    <!-- Calculator Section -->
+    <section class="section" style="background-color: var(--bg-secondary);">
+        <div class="container">
+
+            <!-- AI Autofill Prompter -->
+            <div class="ai-box reveal">
+                <div class="ai-header">
+                    <div class="ai-header-title">
+                        <i class="fas fa-magic ai-sparkle" aria-hidden="true"></i>
+                        AI Auto-Fill Configurator
+                    </div>
+                    <button id="btnAiFill" class="btn-ai-fill" type="button">
+                        <i class="fas fa-wand-magic-sparkles" aria-hidden="true" style="margin-right: 6px;"></i>Apply Specs
+                    </button>
+                </div>
+                <textarea 
+                    id="aiTextInput" 
+                    class="form-control" 
+                    rows="2" 
+                    placeholder="Type a sentence like: I need 5000 A4 brochures, 12 pages, 170 GSM art paper, matt lamination, perfect binding, express delivery..."
+                    aria-label="Natural language quote input"
+                    maxlength="500"></textarea>
+                <p style="font-size: 0.78rem; color: var(--text-light); margin-top: 8px;">
+                    <i class="fas fa-info-circle" aria-hidden="true"></i> Our AI parser will detect product type, quantity, size, pages, GSM, and finishing automatically.
+                </p>
+            </div>
+
+            <!-- Calculator Grid -->
+            <div class="quote-grid">
+                
+                <!-- Steps (Left Column) -->
+                <div class="calculator-steps">
+                    
+                    <!-- Step 1: Product Type -->
+                    <div class="glass-card step-box reveal">
+                        <h2 class="step-title">
+                            <span class="step-num" aria-hidden="true">1</span>
+                            Select Product Type
+                        </h2>
+                        <div class="choice-cards" role="radiogroup" aria-label="Product type selection">
+                            <div class="choice-card selected" tabindex="0" role="radio" aria-checked="true">
+                                <input type="radio" name="prodType" id="pBrochure" value="brochure" checked>
+                                <label for="pBrochure" class="choice-card-icon" aria-hidden="true">
+                                    <i class="fas fa-book-open" style="color:var(--clr-purple-light);"></i>
+                                </label>
+                                <span class="choice-card-title">Brochures</span>
+                            </div>
+                            <div class="choice-card" tabindex="0" role="radio" aria-checked="false">
+                                <input type="radio" name="prodType" id="pCarton" value="carton">
+                                <label for="pCarton" class="choice-card-icon" aria-hidden="true">
+                                    <i class="fas fa-box" style="color:var(--clr-green-light);"></i>
+                                </label>
+                                <span class="choice-card-title">Mono Cartons</span>
+                            </div>
+                            <div class="choice-card" tabindex="0" role="radio" aria-checked="false">
+                                <input type="radio" name="prodType" id="pLeaflet" value="leaflet">
+                                <label for="pLeaflet" class="choice-card-icon" aria-hidden="true">
+                                    <i class="fas fa-scroll" style="color:var(--clr-orange);"></i>
+                                </label>
+                                <span class="choice-card-title">Leaflets</span>
+                            </div>
+                            <div class="choice-card" tabindex="0" role="radio" aria-checked="false">
+                                <input type="radio" name="prodType" id="pStationery" value="stationery">
+                                <label for="pStationery" class="choice-card-icon" aria-hidden="true">
+                                    <i class="fas fa-pen-nib" style="color:var(--clr-blue);"></i>
+                                </label>
+                                <span class="choice-card-title">Stationery</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Step 2: Specifications -->
+                    <div class="glass-card step-box reveal">
+                        <h2 class="step-title">
+                            <span class="step-num" aria-hidden="true">2</span>
+                            Configure Specifications
+                        </h2>
+                        <div class="input-grid">
+                            <div class="form-group">
+                                <label for="quantity">Quantity (Units)</label>
+                                <input type="number" id="quantity" class="form-control" value="1000" min="100" step="50" aria-describedby="qtyHint">
+                                <span id="qtyHint" style="font-size: 0.75rem; color: var(--text-light);">Minimum 100 units</span>
+                            </div>
+                            <div class="form-group">
+                                <label for="size">Dimensions</label>
+                                <select id="size" class="form-control">
+                                    <option value="a4" selected>A4 Size (210×297mm)</option>
+                                    <option value="a5">A5 Size – Compact</option>
+                                    <option value="a3">A3 Size – Poster/Folder</option>
+                                </select>
+                            </div>
+                            <div class="form-group" id="pagesGroup">
+                                <label for="pages">Number of Pages</label>
+                                <select id="pages" class="form-control">
+                                    <option value="4">4 Pages</option>
+                                    <option value="8">8 Pages</option>
+                                    <option value="12">12 Pages</option>
+                                    <option value="16" selected>16 Pages</option>
+                                    <option value="24">24 Pages</option>
+                                    <option value="32">32 Pages</option>
+                                    <option value="48">48 Pages</option>
+                                    <option value="64">64 Pages</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="gsm">Paper Thickness (GSM)</label>
+                                <select id="gsm" class="form-control">
+                                    <option value="80">80 GSM – Maplitho Flyer</option>
+                                    <option value="130" selected>130 GSM – Gloss Art Paper</option>
+                                    <option value="170">170 GSM – Heavy Art Paper</option>
+                                    <option value="300">300 GSM – Premium Art Card</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Step 3: Finishing & Logistics -->
+                    <div class="glass-card step-box reveal">
+                        <h2 class="step-title">
+                            <span class="step-num" aria-hidden="true">3</span>
+                            Select Finishing &amp; Logistics
+                        </h2>
+                        <div class="input-grid">
+                            <div class="form-group">
+                                <label for="lamination">Lamination Film</label>
+                                <select id="lamination" class="form-control">
+                                    <option value="lamination_none">No Lamination</option>
+                                    <option value="lamination_gloss">Thermal Gloss Film</option>
+                                    <option value="lamination_matt" selected>Thermal Matt Film</option>
+                                </select>
+                            </div>
+                            <div class="form-group" id="bindingGroup">
+                                <label for="binding">Binding Style</label>
+                                <select id="binding" class="form-control">
+                                    <option value="binding_stitch" selected>Saddle Stitch (Pins)</option>
+                                    <option value="binding_perfect">Perfect Bound (Glue)</option>
+                                    <option value="binding_wiro">Wiro / Spiral Bound</option>
+                                </select>
+                            </div>
+                            <div class="form-group" style="align-self: center;">
+                                <label class="form-control" style="display:flex; align-items:center; gap:10px; cursor:pointer; font-weight:500; border-style:dashed; min-height: 48px; padding: 13px 16px;">
+                                    <input type="checkbox" id="spotUv" style="width:18px; height:18px; accent-color:var(--clr-purple-light); flex-shrink:0; cursor:pointer;">
+                                    <span>Add Spot UV Coating</span>
+                                </label>
+                            </div>
+                            <div class="form-group">
+                                <label for="delivery">Delivery Dispatch</label>
+                                <select id="delivery" class="form-control">
+                                    <option value="standard" selected>Standard (5–7 Days)</option>
+                                    <option value="express">Express (2–3 Days)</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Summary Panel (Right Column) -->
+                <div class="glass-card summary-panel reveal">
+                    <h2 class="summary-title">
+                        <i class="fas fa-receipt" aria-hidden="true" style="color: var(--clr-purple-light); margin-right: 8px;"></i>
+                        Estimate Summary
+                    </h2>
+                    
+                    <div class="summary-row">
+                        <span>Paper Stock Cost</span>
+                        <strong id="outPaperCost" aria-live="polite">₹0</strong>
+                    </div>
+                    <div class="summary-row">
+                        <span>Press &amp; Printing Cost</span>
+                        <strong id="outPressCost" aria-live="polite">₹0</strong>
+                    </div>
+                    <div class="summary-row" style="padding-bottom: 12px; border-bottom: 1px solid var(--border-glass);">
+                        <span>Post-Press Finishing</span>
+                        <strong id="outFinishCost" aria-live="polite">₹0</strong>
+                    </div>
+                    <div class="summary-row" style="color: var(--clr-green); font-weight: 600;">
+                        <span>Volume Discount</span>
+                        <strong id="outDiscount" aria-live="polite">₹0</strong>
+                    </div>
+                    
+                    <div class="summary-row" style="margin-top: 8px; padding-top: 12px; border-top: 1px solid var(--border-glass);">
+                        <span>Net Subtotal</span>
+                        <strong id="outSubtotal" aria-live="polite">₹0</strong>
+                    </div>
+                    <div class="summary-row">
+                        <span>GST (18% standard tax)</span>
+                        <strong id="outGst" aria-live="polite">₹0</strong>
+                    </div>
+                    
+                    <div class="summary-row total" aria-live="polite">
+                        <span>Estimated Total</span>
+                        <span id="outTotal">₹0</span>
+                    </div>
+                    
+                    <p style="font-size: 0.78rem; color: var(--text-light); line-height: 1.5; margin-top: 14px; padding: 12px; background: rgba(93,45,145,0.04); border-radius: 8px; border: 1px solid rgba(93,45,145,0.08);">
+                        <i class="fas fa-info-circle" aria-hidden="true"></i> Estimated pricing based on current Mumbai paper rates &amp; standard offset press metrics. Actual rates may vary by stock availability.
+                    </p>
+
+                    <div class="summary-ctas">
+                        <button id="btnRequestFormal" class="btn btn-primary" type="button">
+                            <i class="fas fa-file-pdf" aria-hidden="true"></i> Get Formal PDF Quote
+                        </button>
+                        <button id="btnRequestWa" class="btn btn-secondary" type="button">
+                            <i class="fab fa-whatsapp" aria-hidden="true"></i> Chat on WhatsApp
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal 1: PDF Quote Request -->
+    <div id="modalQuote" class="modal" role="dialog" aria-modal="true" aria-labelledby="modalQuoteTitle">
+        <div class="modal-content">
+            <button class="modal-close" aria-label="Close modal" id="closeModalQuote">
+                <i class="fas fa-times" aria-hidden="true"></i>
+            </button>
+            <h2 id="modalQuoteTitle" style="margin-bottom: 6px; font-size: 1.3rem;">Request Formal PDF Quote</h2>
+            <p style="color: var(--text-secondary); font-size: 0.88rem; margin-bottom: 24px;">Fill in your details and we'll email a detailed quotation within 2 hours.</p>
+            <form id="formPdfQuote" style="display:flex; flex-direction:column; gap:16px;" novalidate>
+                <div class="form-group">
+                    <label for="pdfName">Your Name</label>
+                    <input type="text" id="pdfName" class="form-control" placeholder="Rahul Sharma" required autocomplete="name" maxlength="100">
+                </div>
+                <div class="form-group">
+                    <label for="pdfCompany">Company Name</label>
+                    <input type="text" id="pdfCompany" class="form-control" placeholder="Acme Pharma Ltd" required autocomplete="organization" maxlength="100">
+                </div>
+                <div class="form-group">
+                    <label for="pdfEmail">Corporate Email</label>
+                    <input type="email" id="pdfEmail" class="form-control" placeholder="name@company.com" required autocomplete="email" maxlength="200">
+                </div>
+                <div class="form-group">
+                    <label for="pdfNotes">Special Notes <span style="color: var(--text-light); font-weight: 400;">(optional)</span></label>
+                    <textarea id="pdfNotes" class="form-control" rows="2" placeholder="Custom dimensions, special finishing, delivery notes..." maxlength="500"></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary" style="width:100%; justify-content:center;">
+                    <i class="fas fa-envelope" aria-hidden="true"></i> Email Me PDF Quotation
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal 2: WhatsApp Quote -->
+    <div id="modalWhatsapp" class="modal" role="dialog" aria-modal="true" aria-labelledby="modalWaTitle">
+        <div class="modal-content">
+            <button class="modal-close" aria-label="Close modal" id="closeModalWa">
+                <i class="fas fa-times" aria-hidden="true"></i>
+            </button>
+            <h2 id="modalWaTitle" style="margin-bottom: 6px; font-size: 1.3rem;">WhatsApp Sales Direct</h2>
+            <p style="color: var(--text-secondary); font-size: 0.88rem; margin-bottom: 24px;">Your quote specifications will be pre-filled in the WhatsApp message automatically.</p>
+            <form id="formWaQuote" style="display:flex; flex-direction:column; gap:16px;" novalidate>
+                <div class="form-group">
+                    <label for="waName">Your Name</label>
+                    <input type="text" id="waName" class="form-control" placeholder="Rahul Sharma" required autocomplete="name" maxlength="100">
+                </div>
+                <div class="form-group">
+                    <label for="waCompany">Company Name</label>
+                    <input type="text" id="waCompany" class="form-control" placeholder="Acme Products" required autocomplete="organization" maxlength="100">
+                </div>
+                <div style="background: rgba(37,211,102,0.08); border: 1px solid rgba(37,211,102,0.2); border-radius: 10px; padding: 12px 16px; font-size: 0.82rem; color: var(--text-secondary); line-height: 1.5;">
+                    <i class="fab fa-whatsapp" style="color: #25D366; margin-right: 6px;" aria-hidden="true"></i>
+                    You'll be redirected to WhatsApp with your specifications pre-filled.
+                </div>
+                <button type="submit" class="btn btn-secondary" style="width:100%; justify-content:center;">
+                    <i class="fab fa-whatsapp" aria-hidden="true"></i> Open WhatsApp Chat
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="grid footer-grid">
+                <div>
+                    <h3 style="margin-bottom: 16px; font-family: var(--font-heading);">OM GRAPHICS</h3>
+                    <p class="footer-brand-desc">Excellence in commercial sheet-fed offset and digital printing since 1996.</p>
+                    <div class="footer-social">
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin" aria-hidden="true"></i></a>
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook" aria-hidden="true"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram" aria-hidden="true"></i></a>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="footer-col-title">Navigation</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html" class="footer-link">Home</a></li>
+                        <li><a href="about.html" class="footer-link">About Us</a></li>
+                        <li><a href="services.html" class="footer-link">Services</a></li>
+                        <li><a href="portfolio.html" class="footer-link">Portfolio</a></li>
+                        <li><a href="contact.html" class="footer-link">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="footer-col-title">Quick Quote</h4>
+                    <ul class="footer-links">
+                        <li><a href="quote.html" class="footer-link">AI Quote Fill</a></li>
+                        <li><a href="quote.html" class="footer-link">Brochure Estimator</a></li>
+                        <li><a href="quote.html" class="footer-link">Carton Estimator</a></li>
+                        <li><a href="quote.html" class="footer-link">Leaflet Estimator</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="footer-col-title">Corporate Plant</h4>
+                    <address class="footer-address">
+                        220, New Sonal Link Ind Estate,<br>
+                        Near Movie Time Cinema, Link Rd,<br>
+                        Kachpada, Malad (W), Mumbai – 400064<br>
+                        <strong>Phone:</strong> <a href="tel:+912228801042" style="color: inherit;">28801042</a> / <a href="tel:+912228803073" style="color: inherit;">3073</a><br>
+                        <strong>WhatsApp:</strong> <a href="https://wa.me/919930264933" style="color: inherit;" target="_blank" rel="noopener noreferrer">+91 99302 64933</a>
+                    </address>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p class="footer-copyright">© 2026 OM GRAPHICS. All rights reserved. Registered Commercial Printing Vendor.</p>
+                <div class="footer-bottom-links">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating WhatsApp -->
+    <a href="https://wa.me/919930264933" class="floating-whatsapp" aria-label="Chat on WhatsApp" target="_blank" rel="noopener noreferrer">
+        <i class="fab fa-whatsapp" aria-hidden="true"></i>
+    </a>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/quote.js"></script>
+    <script src="js/assistant.js" defer></script>
+</body>
+</html>
