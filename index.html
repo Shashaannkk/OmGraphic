@@ -357,6 +357,7 @@
     }
 
     /* Responsive scaling for mobile devices */
+    /* Responsive scaling and cascading vertical layout for tablet & mobile devices */
     @media (max-width: 991px) {
       .hero-3d-lab {
         height: 420px;
@@ -365,19 +366,142 @@
     }
     @media (max-width: 768px) {
       .hero-3d-lab {
-        height: 360px;
-        transform: scale(0.78);
+        height: 380px;
+        transform: scale(0.9);
         margin: 20px 0;
+      }
+      /* Laptop: cascading top-left positioning */
+      .lab-laptop {
+        left: 5%;
+        top: 5%;
+        width: 220px;
+        transform: rotateX(12deg) rotateY(8deg) translateZ(0px);
+      }
+      .laptop-screen {
+        width: 220px;
+        height: 140px;
+      }
+      .laptop-base {
+        width: 236px;
+        height: 140px;
+        top: 136px;
+        left: -8px;
+      }
+      .laptop-print {
+        width: 176px;
+        left: 14px;
+        top: 136px;
+        animation: printLaptopMobile 7s ease-in-out infinite;
+      }
+      .laptop-laser {
+        left: 14px;
+        top: 136px;
+        width: 176px;
+        animation: laserLaptopMobile 7s ease-in-out infinite;
+      }
+      /* Tablet: offset middle-right overlapping laptop, kept visible */
+      .lab-tablet {
+        right: 8%;
+        top: 22%;
+        width: 130px;
+        height: 180px;
+        border-radius: 12px;
+        border-width: 6px;
+        transform: rotateX(10deg) rotateY(-18deg) translateZ(40px);
+      }
+      .tablet-print {
+        width: 102px;
+        left: 6px;
+        top: 164px;
+        animation: printTabletMobile 6.5s ease-in-out infinite;
+      }
+      .tablet-laser {
+        width: 102px;
+        left: 6px;
+        top: 164px;
+        animation: laserTabletMobile 6.5s ease-in-out infinite;
+      }
+      /* Phone: offset bottom-center, floating in front of both */
+      .lab-phone {
+        right: 25%;
+        bottom: 2%;
+        width: 80px;
+        height: 160px;
+        border-radius: 16px;
+        border-width: 5px;
+        transform: rotateX(6deg) rotateY(-6deg) translateZ(90px);
+      }
+      .phone-print {
+        width: 58px;
+        left: 5px;
+        top: 144px;
+        animation: printPhoneMobile 6s ease-in-out infinite;
+      }
+      .phone-laser {
+        width: 58px;
+        left: 5px;
+        top: 144px;
+        animation: laserPhoneMobile 6s ease-in-out infinite;
       }
     }
     @media (max-width: 480px) {
       .hero-3d-lab {
-        height: 300px;
-        transform: scale(0.62);
+        height: 320px;
+        transform: scale(0.76);
+      }
+      .lab-laptop {
+        left: 2%;
       }
       .lab-tablet {
-        display: none; /* Hide tablet on small viewports to save screen real estate */
+        right: 2%;
       }
+      .lab-phone {
+        right: 20%;
+      }
+    }
+
+    /* Keyframes for Mobile Sliding Prints & Laser sweeps */
+    @keyframes printLaptopMobile {
+      0%, 100% { height: 0px; opacity: 0; }
+      5% { height: 0px; opacity: 1; }
+      55%, 90% { height: 90px; opacity: 1; }
+    }
+    @keyframes printTabletMobile {
+      0%, 100% { height: 0px; opacity: 0; }
+      8% { height: 0px; opacity: 1; }
+      58%, 92% { height: 85px; opacity: 1; }
+    }
+    @keyframes printPhoneMobile {
+      0%, 100% { height: 0px; opacity: 0; }
+      12% { height: 0px; opacity: 1; }
+      62%, 94% { height: 75px; opacity: 1; }
+    }
+    @keyframes laserLaptopMobile {
+      0%, 100% { transform: rotateX(76deg) translateZ(2px) translateY(0); opacity: 0; }
+      5% { transform: rotateX(76deg) translateZ(2px) translateY(0); opacity: 1; }
+      55% { transform: rotateX(76deg) translateZ(2px) translateY(90px); opacity: 1; }
+      90% { transform: rotateX(76deg) translateZ(2px) translateY(90px); opacity: 0; }
+    }
+    @keyframes laserTabletMobile {
+      0%, 100% { transform: translateZ(3px) translateY(0); opacity: 0; }
+      8% { transform: translateZ(3px) translateY(0); opacity: 1; }
+      58% { transform: translateZ(3px) translateY(85px); opacity: 1; }
+      92% { transform: translateZ(3px) translateY(85px); opacity: 0; }
+    }
+    @keyframes laserPhoneMobile {
+      0%, 100% { transform: translateZ(3px) translateY(0); opacity: 0; }
+      12% { transform: translateZ(3px) translateY(0); opacity: 1; }
+      62% { transform: translateZ(3px) translateY(75px); opacity: 1; }
+      94% { transform: translateZ(3px) translateY(75px); opacity: 0; }
+    }
+
+    /* Printing Burst Interactive Speedup & Glow */
+    .device-mockup.printing-burst .printed-sheet {
+      animation-duration: 1.2s !important;
+    }
+    .device-mockup.printing-burst .laser-beam {
+      animation-duration: 1.2s !important;
+      box-shadow: 0 0 16px #00ffff, 0 0 25px #ff00ff, 0 0 35px #00ffff;
     }
 
     /* ═══ INK PARTICLES ═══ */
@@ -1431,27 +1555,94 @@
       }, 3000);
     });
 
-    // 3D Parallax Mouse Tracking for Interactive Devices
+    // 3D Parallax Mouse & Touch Tracking for Interactive Devices
     (function init3DParallax() {
       const lab = document.getElementById('hero3dLab');
       const wrapper = document.getElementById('labWrapper');
       if (!lab || !wrapper) return;
 
-      lab.addEventListener('mousemove', (e) => {
+      function handleMove(clientX, clientY) {
         const rect = lab.getBoundingClientRect();
-        const x = e.clientX - rect.left - rect.width / 2;
-        const y = e.clientY - rect.top - rect.height / 2;
+        const x = clientX - rect.left - rect.width / 2;
+        const y = clientY - rect.top - rect.height / 2;
         
-        // Rotate container up to 15 degrees based on mouse position
+        // Rotate container up to 14 degrees based on coordinates
         const rotateY = (x / (rect.width / 2)) * 14;
         const rotateX = -(y / (rect.height / 2)) * 14;
         
         wrapper.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+      }
+
+      lab.addEventListener('mousemove', (e) => {
+        handleMove(e.clientX, e.clientY);
       });
+
+      // Touch events support for mobile/tablet swipes
+      lab.addEventListener('touchmove', (e) => {
+        if (e.touches.length === 1) {
+          // Prevent scroll while tilting inside the lab area
+          e.preventDefault();
+          handleMove(e.touches[0].clientX, e.touches[0].clientY);
+        }
+      }, { passive: false });
 
       lab.addEventListener('mouseleave', () => {
         wrapper.style.transform = 'rotateX(0deg) rotateY(0deg)';
       });
+
+      lab.addEventListener('touchend', () => {
+        wrapper.style.transform = 'rotateX(0deg) rotateY(0deg)';
+      });
+
+      // Interactive Tap/Click print speed-up burst
+      const devices = document.querySelectorAll('.device-mockup');
+      devices.forEach(device => {
+        device.addEventListener('click', (e) => {
+          e.stopPropagation();
+          if (device.classList.contains('printing-burst')) return;
+
+          device.classList.add('printing-burst');
+          
+          // Spawn temporary ink burst particles
+          spawnInkBurst(device);
+
+          setTimeout(() => {
+            device.classList.remove('printing-burst');
+          }, 1200);
+        });
+      });
+
+      function spawnInkBurst(target) {
+        const inkContainer = document.querySelector('.ink-particles');
+        if (!inkContainer) return;
+
+        const colors = ['#00BFFF', '#FF00FF', '#FFD700', '#00FF7F', '#FF4500'];
+        const rect = target.getBoundingClientRect();
+        const labRect = lab.getBoundingClientRect();
+        
+        // Target relative coordinates
+        const left = rect.left - labRect.left + rect.width / 2;
+        const top = rect.top - labRect.top + rect.height / 2;
+
+        for (let i = 0; i < 6; i++) {
+          const drop = document.createElement('div');
+          drop.className = 'ink-drop';
+          drop.style.cssText = `
+            width: ${Math.random() * 8 + 4}px;
+            height: ${Math.random() * 8 + 4}px;
+            background: ${colors[Math.floor(Math.random() * colors.length)]};
+            left: ${left + (Math.random() * 40 - 20)}px;
+            top: ${top + (Math.random() * 40 - 20)}px;
+            animation: inkFloat 1.2s ease-out forwards;
+            opacity: 1;
+            z-index: 100;
+          `;
+          inkContainer.appendChild(drop);
+          
+          // Remove after animation finishes
+          setTimeout(() => drop.remove(), 1200);
+        }
+      }
     })();
   </script>
 
