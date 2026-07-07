@@ -23,6 +23,275 @@
 
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous">
+
+  <!-- 3D Premium Visual Enhancements -->
+  <style>
+    /* ═══ HERO 3D SCENE ═══ */
+    .hero-img-wrap {
+      position: relative;
+      transform-style: preserve-3d;
+      perspective: 1200px;
+    }
+    .hero-img-wrap::before {
+      content: '';
+      position: absolute;
+      inset: -3px;
+      border-radius: inherit;
+      background: linear-gradient(135deg, #5D2D91, #009E5A, #F37021, #1C3B88);
+      z-index: -1;
+      opacity: 0.7;
+      filter: blur(8px);
+      animation: heroGlowPulse 4s ease-in-out infinite;
+    }
+    @keyframes heroGlowPulse {
+      0%, 100% { opacity: 0.5; filter: blur(8px) brightness(1); }
+      50%       { opacity: 0.9; filter: blur(14px) brightness(1.3); }
+    }
+    .hero-img-wrap img {
+      transform: perspective(900px) rotateY(-4deg) rotateX(2deg);
+      transition: transform 0.8s cubic-bezier(0.34,1.56,0.64,1);
+      filter: brightness(1.05) contrast(1.05);
+    }
+    .hero-img-wrap:hover img {
+      transform: perspective(900px) rotateY(0deg) rotateX(0deg) scale(1.03);
+    }
+
+    /* ═══ INK PARTICLES ═══ */
+    .ink-particles {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      overflow: hidden;
+      border-radius: inherit;
+      z-index: 2;
+    }
+    .ink-drop {
+      position: absolute;
+      border-radius: 50%;
+      animation: inkFloat linear infinite;
+      opacity: 0;
+    }
+    .ink-drop:nth-child(1)  { width:8px;  height:8px;  background:#00BFFF; left:10%; top:80%; animation-duration:4s; animation-delay:0s; }
+    .ink-drop:nth-child(2)  { width:5px;  height:5px;  background:#FF00FF; left:25%; top:70%; animation-duration:5.5s; animation-delay:0.7s; }
+    .ink-drop:nth-child(3)  { width:10px; height:10px; background:#FFD700; left:60%; top:85%; animation-duration:3.8s; animation-delay:1.2s; }
+    .ink-drop:nth-child(4)  { width:6px;  height:6px;  background:#00FF7F; left:75%; top:75%; animation-duration:5s;   animation-delay:0.4s; }
+    .ink-drop:nth-child(5)  { width:7px;  height:7px;  background:#FF4500; left:45%; top:90%; animation-duration:4.5s; animation-delay:1.8s; }
+    .ink-drop:nth-child(6)  { width:4px;  height:4px;  background:#00BFFF; left:85%; top:60%; animation-duration:6s;   animation-delay:0.2s; }
+    @keyframes inkFloat {
+      0%   { transform: translateY(0) scale(1);   opacity: 0; }
+      10%  { opacity: 0.8; }
+      90%  { opacity: 0.6; }
+      100% { transform: translateY(-180px) scale(0.3); opacity: 0; }
+    }
+
+    /* ═══ MACHINE CARDS – 3D GLOW BY TYPE ═══ */
+    .machine-card {
+      position: relative;
+      transform-style: preserve-3d;
+      transition: transform 0.45s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.45s ease;
+    }
+    .machine-card:hover {
+      transform: translateY(-10px) rotateX(2deg) rotateY(-1deg);
+    }
+    /* Komori 426 – cyan/blue glow */
+    .machine-card[data-machine="komori-426"]:hover {
+      box-shadow: 0 20px 60px rgba(0,191,255,0.35), 0 0 0 1px rgba(0,191,255,0.2), var(--shadow-xl);
+    }
+    /* Komori 28 – purple glow */
+    .machine-card[data-machine="komori-28"]:hover {
+      box-shadow: 0 20px 60px rgba(93,45,145,0.45), 0 0 0 1px rgba(93,45,145,0.3), var(--shadow-xl);
+    }
+    /* Xerox Digital – magenta glow */
+    .machine-card[data-machine="xerox"]:hover {
+      box-shadow: 0 20px 60px rgba(255,0,128,0.35), 0 0 0 1px rgba(255,0,128,0.2), var(--shadow-xl);
+    }
+    /* Kodak CTP – red/laser glow */
+    .machine-card[data-machine="ctp"]:hover {
+      box-shadow: 0 20px 60px rgba(220,50,50,0.35), 0 0 0 1px rgba(220,50,50,0.2), var(--shadow-xl);
+    }
+    /* Shoei Folding – amber glow */
+    .machine-card[data-machine="folding"]:hover {
+      box-shadow: 0 20px 60px rgba(255,165,0,0.35), 0 0 0 1px rgba(255,165,0,0.2), var(--shadow-xl);
+    }
+    /* Polar Cutting – green glow */
+    .machine-card[data-machine="cutting"]:hover {
+      box-shadow: 0 20px 60px rgba(0,158,90,0.35), 0 0 0 1px rgba(0,158,90,0.2), var(--shadow-xl);
+    }
+
+    /* Machine image – cinematic aspect + enhanced hover */
+    .machine-img {
+      height: 240px !important;
+      object-position: center top;
+      filter: brightness(1.05) saturate(1.15);
+      transition: transform 0.6s ease, filter 0.4s ease !important;
+    }
+    .machine-card:hover .machine-img {
+      transform: scale(1.07) !important;
+      filter: brightness(1.12) saturate(1.25);
+    }
+
+    /* Machine title gradient per type */
+    .machine-card[data-machine="komori-426"] .machine-title { background: linear-gradient(135deg,#00BFFF,#1C3B88); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+    .machine-card[data-machine="komori-28"]  .machine-title { background: linear-gradient(135deg,#7443B5,#5D2D91); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+    .machine-card[data-machine="xerox"]      .machine-title { background: linear-gradient(135deg,#FF0080,#9B59B6); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+    .machine-card[data-machine="ctp"]        .machine-title { background: linear-gradient(135deg,#FF4500,#DC3232); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+    .machine-card[data-machine="folding"]    .machine-title { background: linear-gradient(135deg,#FF9500,#F37021); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+    .machine-card[data-machine="cutting"]    .machine-title { background: linear-gradient(135deg,#00D084,#009E5A); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+
+    /* ═══ CMYK COLOR BADGE ═══ */
+    .cmyk-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      margin-bottom: 12px;
+    }
+    .cmyk-dot {
+      width: 10px; height: 10px;
+      border-radius: 50%;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+    }
+    .cmyk-dot.c { background: #00AEEF; }
+    .cmyk-dot.m { background: #EC008C; }
+    .cmyk-dot.y { background: #FFF200; border: 1px solid #ccc; }
+    .cmyk-dot.k { background: #231F20; }
+
+    /* ═══ SERVICES IMAGE – 3D TILT ═══ */
+    .services-image-wrap {
+      aspect-ratio: 3/4;
+      transform: perspective(1000px) rotateY(4deg) rotateX(-2deg);
+      transition: transform 0.6s cubic-bezier(0.34,1.56,0.64,1);
+      box-shadow: -12px 20px 50px rgba(93,45,145,0.25), var(--shadow-xl) !important;
+    }
+    .services-image-wrap:hover {
+      transform: perspective(1000px) rotateY(0deg) rotateX(0deg) scale(1.02);
+    }
+    .services-image-wrap img {
+      filter: brightness(1.05) saturate(1.2);
+    }
+
+    /* ═══ PORTFOLIO ITEMS – GLASS GLOW ═══ */
+    .portfolio-item {
+      aspect-ratio: auto;
+    }
+    .portfolio-item img {
+      width: 100%; height: 220px; object-fit: cover;
+      filter: brightness(1.05) saturate(1.1);
+      transition: transform 0.5s ease, filter 0.4s ease;
+    }
+    .portfolio-item:hover img {
+      transform: scale(1.07);
+      filter: brightness(1.12) saturate(1.3);
+    }
+    .portfolio-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(93,45,145,0.85) 0%, transparent 55%);
+      opacity: 0;
+      transition: opacity 0.4s ease;
+      display: flex; align-items: flex-end;
+      padding: 20px;
+      border-radius: var(--radius-md);
+    }
+    .portfolio-item:hover .portfolio-overlay {
+      opacity: 1;
+    }
+    .portfolio-overlay-text h4 { color:#fff; margin-bottom:4px; font-size:1rem; }
+    .portfolio-overlay-text p  { color:rgba(255,255,255,0.8); font-size:0.8rem; }
+
+    /* ═══ STATS ROW – GLOWING NUMBERS ═══ */
+    .stat-number {
+      font-size: 2.6rem !important;
+      font-weight: 800 !important;
+      background: linear-gradient(135deg, var(--clr-purple), var(--clr-green));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      display: block;
+    }
+
+    /* ═══ SECTION SUBTITLE – NEON PILL ═══ */
+    .section-subtitle {
+      display: inline-block;
+      padding: 5px 18px;
+      background: linear-gradient(135deg, rgba(93,45,145,0.12), rgba(0,158,90,0.12));
+      border: 1px solid rgba(93,45,145,0.25);
+      border-radius: 999px;
+      color: var(--clr-purple-light);
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+
+    /* ═══ HERO VISUAL FLOATING ELEMENTS ═══ */
+    .hero-3d-frame {
+      position: relative;
+    }
+    .hero-tech-chip {
+      position: absolute;
+      top: 50%;
+      right: -30px;
+      transform: translateY(-50%);
+      background: var(--bg-secondary);
+      border: 1px solid rgba(93,45,145,0.3);
+      border-radius: 14px;
+      padding: 10px 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      box-shadow: 0 8px 32px rgba(93,45,145,0.2);
+      animation: float 6s 1s ease-in-out infinite;
+      z-index: 10;
+      min-width: 130px;
+    }
+    .hero-tech-chip-label { font-size: 0.68rem; color: var(--text-tertiary); font-weight: 600; text-transform: uppercase; letter-spacing: 1px; }
+    .hero-tech-chip-val   { font-size: 0.88rem; font-weight: 700; color: var(--text-primary); }
+    .hero-tech-chip-bar   { height: 4px; border-radius: 99px; background: linear-gradient(90deg,#5D2D91,#009E5A); }
+
+    /* ═══ BACKGROUND ANIMATED GRADIENT MESH ═══ */
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background:
+        radial-gradient(ellipse at 10% 20%, rgba(93,45,145,0.06) 0%, transparent 50%),
+        radial-gradient(ellipse at 90% 80%, rgba(0,158,90,0.05) 0%, transparent 50%),
+        radial-gradient(ellipse at 50% 50%, rgba(243,112,33,0.03) 0%, transparent 60%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* ═══ DARK THEME MACHINE GLOW ═══ */
+    body.dark-theme .machine-card {
+      box-shadow: 0 0 0 1px rgba(255,255,255,0.06), var(--shadow-md);
+    }
+    body.dark-theme .machine-card:hover {
+      box-shadow: 0 20px 60px rgba(93,45,145,0.6), var(--shadow-xl);
+    }
+
+    /* ═══ HERO TITLE CMYK UNDERLINE ═══ */
+    .hero-title span {
+      position: relative;
+      display: inline-block;
+    }
+    .hero-title span::after {
+      content: '';
+      position: absolute;
+      bottom: -6px;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      border-radius: 2px;
+      background: linear-gradient(90deg, #00AEEF, #EC008C, #FFF200, #231F20);
+      animation: cmykPulse 3s ease-in-out infinite;
+    }
+    @keyframes cmykPulse {
+      0%, 100% { opacity: 1; transform: scaleX(1); }
+      50%       { opacity: 0.7; transform: scaleX(0.95); }
+    }
+  </style>
 </head>
 <body>
 
@@ -119,8 +388,17 @@
             Established 1996 &nbsp;•&nbsp; 30+ Years of Trust
           </div>
 
+          <!-- CMYK dots -->
+          <div class="cmyk-badge" style="margin-bottom:16px;">
+            <span class="cmyk-dot c"></span>
+            <span class="cmyk-dot m"></span>
+            <span class="cmyk-dot y"></span>
+            <span class="cmyk-dot k"></span>
+            <span style="font-size:0.7rem;font-weight:700;color:var(--text-tertiary);margin-left:6px;letter-spacing:1px;">CMYK OFFSET PRINTING</span>
+          </div>
+
           <h1 class="hero-title" id="heroTitle">
-            Bringing Colors<br>To Every Print
+            Bringing <span>Colors</span><br>To Every Print
           </h1>
 
           <p class="hero-desc">
@@ -138,18 +416,38 @@
         </div>
 
         <!-- Hero Visual -->
-        <div class="hero-visual">
+        <div class="hero-visual hero-3d-frame">
           <div class="hero-badge2">
             <i class="fas fa-shield-check"></i> &nbsp;ISO Audited Plant
           </div>
 
           <div class="hero-img-wrap">
             <img
-              src="Assets/print-hero.jpg"
-              alt="OM GRAPHICS printing press facility in Mumbai"
+              src="Assets/hero-3d-press.png"
+              onerror="this.src='Assets/print-hero.jpg'"
+              alt="OM GRAPHICS – Komori offset printing press facility in Mumbai – 3D render"
               loading="eager"
             >
             <div class="hero-img-overlay"></div>
+            <!-- Floating ink particles -->
+            <div class="ink-particles" aria-hidden="true">
+              <div class="ink-drop"></div>
+              <div class="ink-drop"></div>
+              <div class="ink-drop"></div>
+              <div class="ink-drop"></div>
+              <div class="ink-drop"></div>
+              <div class="ink-drop"></div>
+            </div>
+          </div>
+
+          <!-- Floating tech chip -->
+          <div class="hero-tech-chip" aria-hidden="true">
+            <div class="hero-tech-chip-label">Resolution</div>
+            <div class="hero-tech-chip-val">4000 DPI</div>
+            <div class="hero-tech-chip-bar" style="width:90%;"></div>
+            <div class="hero-tech-chip-label" style="margin-top:4px;">Speed</div>
+            <div class="hero-tech-chip-val">15K/hr</div>
+            <div class="hero-tech-chip-bar" style="width:75%;"></div>
           </div>
 
           <div class="hero-badge">
@@ -291,12 +589,13 @@
           <a href="services.html" class="btn btn-outline" id="servicesViewBtn">View All Services &amp; Machinery</a>
         </div>
 
-        <!-- Right: Shop Image -->
+        <!-- Right: Services Overview 3D Image -->
         <div class="reveal reveal--right">
           <div class="services-image-wrap">
             <img
-              src="Assets/print-shop-1.jpg"
-              alt="OM GRAPHICS printing shop interior – Mumbai"
+              src="Assets/services-overview-3d.png"
+              onerror="this.src='Assets/print-shop-1.jpg'"
+              alt="OM GRAPHICS – Premium printed materials including brochures, cartons, and visual aids"
               loading="lazy"
             >
           </div>
@@ -327,9 +626,16 @@
 
       <!-- Press Machines -->
       <div id="tab-press" class="machinery-content active" role="tabpanel" aria-labelledby="btnPress">
-        <div class="glass-card machine-card">
-          <img class="machine-img" src="Assets/machine-komori-1.jpg" alt="Komori Lithrone 426 offset printing press" loading="lazy">
+        <div class="glass-card machine-card" data-machine="komori-426">
+          <img class="machine-img"
+               src="Assets/machine-komori-426-3d.png"
+               onerror="this.src='Assets/machine-komori-1.jpg'"
+               alt="Komori Lithrone 426 – 4-color high-speed offset printing press, 3D render" loading="lazy">
           <div class="machine-body">
+            <div class="cmyk-badge">
+              <span class="cmyk-dot c"></span><span class="cmyk-dot m"></span><span class="cmyk-dot y"></span><span class="cmyk-dot k"></span>
+              <span style="font-size:0.65rem;font-weight:700;color:var(--text-tertiary);letter-spacing:1px;margin-left:4px;">4-COLOR OFFSET</span>
+            </div>
             <h3 class="machine-title">Komori Lithrone 426</h3>
             <p class="machine-desc">Four-color high-speed precision offset press, perfect for commercial catalogs and high-volume corporate brochure workloads with consistent CMYK fidelity.</p>
             <div class="machine-specs">
@@ -338,9 +644,16 @@
             </div>
           </div>
         </div>
-        <div class="glass-card machine-card">
-          <img class="machine-img" src="Assets/machine-komori-2.jpg" alt="Komori Lithrone 28 multicolor offset press" loading="lazy">
+        <div class="glass-card machine-card" data-machine="komori-28">
+          <img class="machine-img"
+               src="Assets/machine-komori-28-3d.png"
+               onerror="this.src='Assets/machine-komori-2.jpg'"
+               alt="Komori Lithrone 28 – multicolor sheet-fed offset printing press, 3D render" loading="lazy">
           <div class="machine-body">
+            <div class="cmyk-badge">
+              <span class="cmyk-dot c"></span><span class="cmyk-dot m"></span><span class="cmyk-dot y"></span><span class="cmyk-dot k"></span>
+              <span style="font-size:0.65rem;font-weight:700;color:var(--text-tertiary);letter-spacing:1px;margin-left:4px;">MULTICOLOR OFFSET</span>
+            </div>
             <h3 class="machine-title">Komori Lithrone 28</h3>
             <p class="machine-desc">High-efficiency multicolor sheet-fed offset press configured for medium to long runs of mono cartons and blister cards for pharma clients.</p>
             <div class="machine-specs">
@@ -349,9 +662,16 @@
             </div>
           </div>
         </div>
-        <div class="glass-card machine-card">
-          <img class="machine-img" src="Assets/machine-digital.jpg" alt="Xerox Docucolor digital printing press" loading="lazy">
+        <div class="glass-card machine-card" data-machine="xerox">
+          <img class="machine-img"
+               src="Assets/machine-digital-3d.png"
+               onerror="this.src='Assets/machine-digital.jpg'"
+               alt="Xerox Docucolor digital printing press, 3D render" loading="lazy">
           <div class="machine-body">
+            <div class="cmyk-badge">
+              <span style="width:10px;height:10px;border-radius:50%;background:linear-gradient(135deg,#FF0080,#9B59B6);box-shadow:0 2px 6px rgba(255,0,128,0.4);"></span>
+              <span style="font-size:0.65rem;font-weight:700;color:var(--text-tertiary);letter-spacing:1px;margin-left:8px;">DIGITAL PRESS · 2400 DPI</span>
+            </div>
             <h3 class="machine-title">Xerox Docucolor Digital</h3>
             <p class="machine-desc">High-definition commercial digital press for short runs, variable data personalization, and instant catalog mockups with same-day dispatch.</p>
             <div class="machine-specs">
@@ -364,9 +684,16 @@
 
       <!-- Pre-Press & Post-Press -->
       <div id="tab-prepost" class="machinery-content" role="tabpanel" aria-labelledby="btnPrePost">
-        <div class="glass-card machine-card">
-          <img class="machine-img" src="Assets/machine-ctp.jpg" alt="Kodak CTP computer-to-plate system" loading="lazy">
+        <div class="glass-card machine-card" data-machine="ctp">
+          <img class="machine-img"
+               src="Assets/machine-ctp-3d.png"
+               onerror="this.src='Assets/machine-ctp.jpg'"
+               alt="Kodak CTP – computer-to-plate thermal laser pre-press system, 3D render" loading="lazy">
           <div class="machine-body">
+            <div class="cmyk-badge">
+              <span style="width:10px;height:10px;border-radius:50%;background:linear-gradient(135deg,#FF4500,#DC3232);box-shadow:0 2px 6px rgba(255,69,0,0.4);"></span>
+              <span style="font-size:0.65rem;font-weight:700;color:var(--text-tertiary);letter-spacing:1px;margin-left:8px;">THERMAL LASER · 4000 DPI</span>
+            </div>
             <h3 class="machine-title">Kodak CTP (Pre-Press)</h3>
             <p class="machine-desc">Computer-to-Plate laser thermal engine generating sharp dot fidelity for offset press plates — ensuring color accuracy at up to 4000 dpi.</p>
             <div class="machine-specs">
@@ -375,9 +702,16 @@
             </div>
           </div>
         </div>
-        <div class="glass-card machine-card">
-          <img class="machine-img" src="Assets/machine-folding.jpg" alt="Shoei folding machine for brochures and leaflets" loading="lazy">
+        <div class="glass-card machine-card" data-machine="folding">
+          <img class="machine-img"
+               src="Assets/machine-folding-3d.png"
+               onerror="this.src='Assets/machine-folding.jpg'"
+               alt="Shoei folding machine – high-speed automated paper folding for brochures and leaflets, 3D render" loading="lazy">
           <div class="machine-body">
+            <div class="cmyk-badge">
+              <span style="width:10px;height:10px;border-radius:50%;background:linear-gradient(135deg,#FF9500,#F37021);box-shadow:0 2px 6px rgba(255,149,0,0.4);"></span>
+              <span style="font-size:0.65rem;font-weight:700;color:var(--text-tertiary);letter-spacing:1px;margin-left:8px;">POST-PRESS · FOLDING</span>
+            </div>
             <h3 class="machine-title">Shoei Folding Machine</h3>
             <p class="machine-desc">High-speed automated folding lines for booklets, pharmaceutical leaflets, and multi-fold brochures with variable speed control.</p>
             <div class="machine-specs">
@@ -386,9 +720,16 @@
             </div>
           </div>
         </div>
-        <div class="glass-card machine-card">
-          <img class="machine-img" src="Assets/machine-cutting.jpg" alt="Polar hydraulic cutting machines" loading="lazy">
+        <div class="glass-card machine-card" data-machine="cutting">
+          <img class="machine-img"
+               src="Assets/machine-cutting-3d.png"
+               onerror="this.src='Assets/machine-cutting.jpg'"
+               alt="Polar 42 hydraulic cutting guillotine machine, 3D render" loading="lazy">
           <div class="machine-body">
+            <div class="cmyk-badge">
+              <span style="width:10px;height:10px;border-radius:50%;background:linear-gradient(135deg,#00D084,#009E5A);box-shadow:0 2px 6px rgba(0,208,132,0.4);"></span>
+              <span style="font-size:0.65rem;font-weight:700;color:var(--text-tertiary);letter-spacing:1px;margin-left:8px;">POST-PRESS · ±0.1mm</span>
+            </div>
             <h3 class="machine-title">Polar Cutting Machines</h3>
             <p class="machine-desc">Programmable high-precision hydraulic paper guillotines (Polar 32 &amp; Polar 42 models) for perfect edge finishing with ±0.1mm accuracy.</p>
             <div class="machine-specs">
@@ -414,7 +755,9 @@
 
       <div class="portfolio-grid stagger-children reveal">
         <div class="portfolio-item">
-          <img src="Assets/print-shop-2.jpg" alt="Commercial print job – brochures and catalogs" loading="lazy">
+          <img src="Assets/portfolio-brochures-3d.png"
+               onerror="this.src='Assets/print-shop-2.jpg'"
+               alt="Premium corporate brochures and catalogs – Komori L426 offset print" loading="lazy">
           <div class="portfolio-overlay">
             <div class="portfolio-overlay-text">
               <h4>Corporate Brochures</h4>
@@ -423,7 +766,8 @@
           </div>
         </div>
         <div class="portfolio-item">
-          <img src="Assets/print-shop-3.jpg" alt="Pharmaceutical mono carton packaging print" loading="lazy">
+          <img src="Assets/print-shop-3.jpg"
+               alt="Pharmaceutical mono carton packaging print" loading="lazy">
           <div class="portfolio-overlay">
             <div class="portfolio-overlay-text">
               <h4>Pharma Mono Cartons</h4>
@@ -432,7 +776,8 @@
           </div>
         </div>
         <div class="portfolio-item">
-          <img src="Assets/print-shop-4.jpg" alt="Print shop – visual aid direct mailers" loading="lazy">
+          <img src="Assets/print-shop-4.jpg"
+               alt="Print shop – visual aid direct mailers" loading="lazy">
           <div class="portfolio-overlay">
             <div class="portfolio-overlay-text">
               <h4>Direct Mailers &amp; Folders</h4>
@@ -441,7 +786,8 @@
           </div>
         </div>
         <div class="portfolio-item">
-          <img src="Assets/about-team.jpg" alt="OM GRAPHICS team working at the press" loading="lazy">
+          <img src="Assets/about-team.jpg"
+               alt="OM GRAPHICS expert team working at the press" loading="lazy">
           <div class="portfolio-overlay">
             <div class="portfolio-overlay-text">
               <h4>Our Expert Team</h4>
