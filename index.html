@@ -26,34 +26,358 @@
 
   <!-- 3D Premium Visual Enhancements -->
   <style>
-    /* ═══ HERO 3D SCENE ═══ */
-    .hero-img-wrap {
+    /* ═══ HERO 3D SCENE (INTERACTIVE DEVICES) ═══ */
+    .hero-3d-lab {
+      position: relative;
+      width: 100%;
+      height: 480px;
+      perspective: 1800px;
+      transform-style: preserve-3d;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 5;
+    }
+    .lab-wrapper {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      transform-style: preserve-3d;
+      transition: transform 0.15s ease-out;
+    }
+
+    /* Device Mockups Base */
+    .device-mockup {
+      position: absolute;
+      transform-style: preserve-3d;
+      filter: drop-shadow(0 15px 35px rgba(0,0,0,0.3));
+      transition: transform 0.4s ease-out;
+    }
+
+    /* 3D Laptop */
+    .lab-laptop {
+      left: 0;
+      top: 15%;
+      width: 290px;
+      transform: rotateX(16deg) rotateY(12deg) translateZ(0px);
+    }
+    .laptop-screen {
+      width: 290px;
+      height: 180px;
+      background: #151515;
+      border: 8px solid #282828;
+      border-bottom: 12px solid #282828;
+      border-radius: 10px 10px 0 0;
+      overflow: hidden;
       position: relative;
       transform-style: preserve-3d;
-      perspective: 1200px;
     }
-    .hero-img-wrap::before {
+    .laptop-display {
+      width: 100%;
+      height: 100%;
+      background: url('Assets/portfolio-brochures-3d.png') no-repeat center/cover;
+      filter: brightness(1.05) saturate(1.1);
+    }
+    .laptop-base {
+      width: 310px;
+      height: 180px;
+      background: linear-gradient(180deg, #d2d2d2, #8e8e8e);
+      border-radius: 0 0 10px 10px;
+      position: absolute;
+      top: 176px;
+      left: -10px;
+      transform: rotateX(76deg);
+      transform-origin: top center;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+      transform-style: preserve-3d;
+    }
+    .laptop-keyboard {
+      position: absolute;
+      inset: 12px;
+      background: rgba(0,0,0,0.12);
+      border-radius: 4px;
+      border: 1px solid rgba(0,0,0,0.06);
+    }
+    .laptop-trackpad {
+      position: absolute;
+      bottom: 8px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 70px;
+      height: 40px;
+      background: rgba(0,0,0,0.06);
+      border-radius: 3px;
+      border: 1px solid rgba(0,0,0,0.04);
+    }
+
+    /* 3D Tablet */
+    .lab-tablet {
+      right: 18%;
+      top: 10%;
+      width: 170px;
+      height: 240px;
+      background: #181818;
+      border: 8px solid #222;
+      border-radius: 16px;
+      transform: rotateX(12deg) rotateY(-22deg) translateZ(40px);
+    }
+    .tablet-display {
+      width: 100%;
+      height: 100%;
+      background: url('Assets/services-overview-3d.png') no-repeat center/cover;
+      border-radius: 8px;
+      filter: brightness(1.05) saturate(1.15);
+    }
+
+    /* 3D Phone */
+    .lab-phone {
+      right: 2%;
+      bottom: 8%;
+      width: 90px;
+      height: 180px;
+      background: #111;
+      border: 6px solid #222;
+      border-radius: 20px;
+      transform: rotateX(8deg) rotateY(-8deg) translateZ(90px);
+    }
+    .phone-display {
+      width: 100%;
+      height: 100%;
+      background: url('Assets/hero-3d-press.png') no-repeat center/cover;
+      border-radius: 14px;
+      filter: brightness(1.05) saturate(1.2);
+    }
+
+    /* Printed Sheets (Sliding out) */
+    .printed-sheet {
+      position: absolute;
+      background: #ffffff;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.22);
+      border-radius: 2px;
+      overflow: hidden;
+      transform-style: preserve-3d;
+      z-index: 2;
+    }
+    .print-proof-header {
+      height: 12px;
+      background: #e5e5e5;
+      border-bottom: 1px dashed #bbb;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 6px;
+      font-family: monospace;
+      font-size: 5px;
+      color: #666;
+    }
+    .cmyk-strip {
+      display: flex;
+      gap: 1.5px;
+    }
+    .cmyk-strip-color {
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+    }
+    .print-graphic-content {
+      padding: 6px;
+      height: calc(100% - 12px);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+    }
+    
+    /* Proofing Alignment Mark */
+    .proof-register-mark {
+      width: 10px;
+      height: 10px;
+      border: 0.5px solid rgba(0,0,0,0.4);
+      border-radius: 50%;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+    .proof-register-mark::before, .proof-register-mark::after {
       content: '';
       position: absolute;
-      inset: -3px;
-      border-radius: inherit;
-      background: linear-gradient(135deg, #5D2D91, #009E5A, #F37021, #1C3B88);
-      z-index: -1;
-      opacity: 0.7;
-      filter: blur(8px);
-      animation: heroGlowPulse 4s ease-in-out infinite;
+      background: rgba(0,0,0,0.4);
     }
-    @keyframes heroGlowPulse {
-      0%, 100% { opacity: 0.5; filter: blur(8px) brightness(1); }
-      50%       { opacity: 0.9; filter: blur(14px) brightness(1.3); }
+    .proof-register-mark::before {
+      width: 100%;
+      height: 0.5px;
+      top: 50%;
+      left: 0;
     }
-    .hero-img-wrap img {
-      transform: perspective(900px) rotateY(-4deg) rotateX(2deg);
-      transition: transform 0.8s cubic-bezier(0.34,1.56,0.64,1);
-      filter: brightness(1.05) contrast(1.05);
+    .proof-register-mark::after {
+      width: 0.5px;
+      height: 100%;
+      left: 50%;
+      top: 0;
     }
-    .hero-img-wrap:hover img {
-      transform: perspective(900px) rotateY(0deg) rotateX(0deg) scale(1.03);
+
+    .proof-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: 8px;
+      font-weight: 800;
+      color: #111;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      z-index: 2;
+    }
+    .proof-cmyk-blocks {
+      height: 4px;
+      background: repeating-linear-gradient(90deg, #EC008C, #EC008C 6px, #00AEEF 6px, #00AEEF 12px, #FFF200 12px, #FFF200 18px, #231F20 18px, #231F20 24px);
+      border-radius: 1px;
+    }
+
+    /* Device-specific printed sheet sizes & animation settings */
+    .laptop-print {
+      width: 230px;
+      height: 150px;
+      left: 20px;
+      top: 176px;
+      transform: rotateX(76deg) translateZ(1px);
+      transform-origin: top center;
+      animation: printLaptop 7s ease-in-out infinite;
+    }
+    .laptop-print .print-graphic-content {
+      background: linear-gradient(135deg, rgba(93,45,145,0.08), rgba(0,158,90,0.08));
+      border: 1px solid rgba(93,45,145,0.15);
+    }
+    
+    .tablet-print {
+      width: 134px;
+      height: 140px;
+      left: 10px;
+      top: 220px;
+      transform: translateZ(2px);
+      animation: printTablet 6.5s ease-in-out infinite;
+    }
+    .tablet-print .print-graphic-content {
+      background: linear-gradient(135deg, rgba(0,158,90,0.08), rgba(28,59,136,0.08));
+      border: 1px solid rgba(0,158,90,0.15);
+    }
+
+    .phone-print {
+      width: 66px;
+      height: 100px;
+      left: 6px;
+      top: 160px;
+      transform: translateZ(2px);
+      animation: printPhone 6s ease-in-out infinite;
+    }
+    .phone-print .print-graphic-content {
+      background: linear-gradient(135deg, rgba(243,112,33,0.08), rgba(93,45,145,0.08));
+      border: 1px solid rgba(243,112,33,0.15);
+    }
+
+    /* Print laser beam sweeping effect */
+    .laser-beam {
+      position: absolute;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, #00ffff, #ff00ff, transparent);
+      box-shadow: 0 0 8px #00ffff, 0 0 12px #ff00ff;
+      z-index: 10;
+      opacity: 0.8;
+    }
+    .laptop-laser {
+      left: 20px;
+      top: 176px;
+      width: 230px;
+      transform: rotateX(76deg) translateZ(2px);
+      animation: laserLaptop 7s ease-in-out infinite;
+    }
+    .tablet-laser {
+      left: 10px;
+      top: 220px;
+      width: 134px;
+      transform: translateZ(3px);
+      animation: laserTablet 6.5s ease-in-out infinite;
+    }
+    .phone-laser {
+      left: 6px;
+      top: 160px;
+      width: 66px;
+      transform: translateZ(3px);
+      animation: laserPhone 6s ease-in-out infinite;
+    }
+
+    /* Animations: Printing out effect (expanding height) */
+    @keyframes printLaptop {
+      0%, 100% { height: 0px; opacity: 0; }
+      5% { height: 0px; opacity: 1; }
+      55%, 90% { height: 140px; opacity: 1; }
+    }
+    @keyframes printTablet {
+      0%, 100% { height: 0px; opacity: 0; }
+      8% { height: 0px; opacity: 1; }
+      58%, 92% { height: 130px; opacity: 1; }
+    }
+    @keyframes printPhone {
+      0%, 100% { height: 0px; opacity: 0; }
+      12% { height: 0px; opacity: 1; }
+      62%, 94% { height: 90px; opacity: 1; }
+    }
+
+    /* Animations: Laser beam tracking the printed sheet boundary */
+    @keyframes laserLaptop {
+      0%, 100% { transform: rotateX(76deg) translateZ(2px) translateY(0); opacity: 0; }
+      5% { transform: rotateX(76deg) translateZ(2px) translateY(0); opacity: 1; }
+      55% { transform: rotateX(76deg) translateZ(2px) translateY(140px); opacity: 1; }
+      90% { transform: rotateX(76deg) translateZ(2px) translateY(140px); opacity: 0; }
+    }
+    @keyframes laserTablet {
+      0%, 100% { transform: translateZ(3px) translateY(0); opacity: 0; }
+      8% { transform: translateZ(3px) translateY(0); opacity: 1; }
+      58% { transform: translateZ(3px) translateY(130px); opacity: 1; }
+      92% { transform: translateZ(3px) translateY(130px); opacity: 0; }
+    }
+    @keyframes laserPhone {
+      0%, 100% { transform: translateZ(3px) translateY(0); opacity: 0; }
+      12% { transform: translateZ(3px) translateY(0); opacity: 1; }
+      62% { transform: translateZ(3px) translateY(90px); opacity: 1; }
+      94% { transform: translateZ(3px) translateY(90px); opacity: 0; }
+    }
+
+    /* Device interactive hover scale up */
+    .device-mockup:hover {
+      filter: drop-shadow(0 20px 45px rgba(93,45,145,0.4));
+    }
+    .lab-laptop:hover {
+      transform: rotateX(16deg) rotateY(12deg) translateZ(20px) scale(1.03);
+    }
+    .lab-tablet:hover {
+      transform: rotateX(12deg) rotateY(-22deg) translateZ(65px) scale(1.03);
+    }
+    .lab-phone:hover {
+      transform: rotateX(8deg) rotateY(-8deg) translateZ(115px) scale(1.03);
+    }
+
+    /* Responsive scaling for mobile devices */
+    @media (max-width: 991px) {
+      .hero-3d-lab {
+        height: 420px;
+        transform: scale(0.9);
+      }
+    }
+    @media (max-width: 768px) {
+      .hero-3d-lab {
+        height: 360px;
+        transform: scale(0.78);
+        margin: 20px 0;
+      }
+    }
+    @media (max-width: 480px) {
+      .hero-3d-lab {
+        height: 300px;
+        transform: scale(0.62);
+      }
+      .lab-tablet {
+        display: none; /* Hide tablet on small viewports to save screen real estate */
+      }
     }
 
     /* ═══ INK PARTICLES ═══ */
@@ -415,33 +739,92 @@
           </div>
         </div>
 
-        <!-- Hero Visual -->
+        <!-- Hero Visual (Interactive 3D Device Lab) -->
         <div class="hero-visual hero-3d-frame">
           <div class="hero-badge2">
             <i class="fas fa-shield-check"></i> &nbsp;ISO Audited Plant
           </div>
 
-          <div class="hero-img-wrap">
-            <img
-              src="Assets/hero-3d-press.png"
-              onerror="this.src='Assets/print-hero.jpg'"
-              alt="OM GRAPHICS – Komori offset printing press facility in Mumbai – 3D render"
-              loading="eager"
-            >
-            <div class="hero-img-overlay"></div>
-            <!-- Floating ink particles -->
-            <div class="ink-particles" aria-hidden="true">
-              <div class="ink-drop"></div>
-              <div class="ink-drop"></div>
-              <div class="ink-drop"></div>
-              <div class="ink-drop"></div>
-              <div class="ink-drop"></div>
-              <div class="ink-drop"></div>
-            </div>
-          </div>
+          <!-- 3D Interactive Device Printing Lab -->
+          <div class="hero-3d-lab" id="hero3dLab">
+            <div class="lab-wrapper" id="labWrapper">
+              
+              <!-- 3D Laptop Mockup -->
+              <div class="device-mockup lab-laptop">
+                <!-- Hinge Print Slot Paper -->
+                <div class="printed-sheet laptop-print">
+                  <div class="print-proof-header">
+                    <span>OM PROOF v2.6 // C M Y K</span>
+                    <div class="cmyk-strip">
+                      <span class="cmyk-strip-color" style="background:#00AEEF;"></span>
+                      <span class="cmyk-strip-color" style="background:#EC008C;"></span>
+                      <span class="cmyk-strip-color" style="background:#FFF200;"></span>
+                      <span class="cmyk-strip-color" style="background:#231F20;"></span>
+                    </div>
+                  </div>
+                  <!-- Printed content mimicking the website design layout -->
+                  <div class="print-graphic-content">
+                    <div class="proof-register-mark"></div>
+                    <div class="proof-title">OM GRAPHICS</div>
+                    <div class="proof-cmyk-blocks"></div>
+                  </div>
+                </div>
+                <!-- Laser Sweep Print Head -->
+                <div class="laser-beam laptop-laser"></div>
+
+                <div class="laptop-screen">
+                  <div class="laptop-display"></div>
+                </div>
+                <div class="laptop-base">
+                  <div class="laptop-keyboard"></div>
+                  <div class="laptop-trackpad"></div>
+                </div>
+              </div>
+
+              <!-- 3D Tablet Mockup -->
+              <div class="device-mockup lab-tablet">
+                <!-- Tablet Bottom Bezel Print Paper -->
+                <div class="printed-sheet tablet-print">
+                  <div class="print-proof-header">
+                    <span>TAB PROOF v1.0</span>
+                    <div class="cmyk-strip">
+                      <span class="cmyk-strip-color" style="background:#00AEEF;"></span>
+                      <span class="cmyk-strip-color" style="background:#EC008C;"></span>
+                    </div>
+                  </div>
+                  <div class="print-graphic-content" style="background: linear-gradient(135deg, rgba(0,158,90,0.1), rgba(28,59,136,0.1)); border: 1px solid rgba(0,158,90,0.2);">
+                    <div class="proof-register-mark"></div>
+                    <div class="proof-title" style="font-size: 8px;">PREMIUM B2B</div>
+                    <div class="proof-cmyk-blocks"></div>
+                  </div>
+                </div>
+                <div class="laser-beam tablet-laser"></div>
+
+                <div class="tablet-display"></div>
+              </div>
+
+              <!-- 3D Phone Mockup -->
+              <div class="device-mockup lab-phone">
+                <!-- Phone Bottom Bezel Print Paper -->
+                <div class="printed-sheet phone-print">
+                  <div class="print-proof-header">
+                    <span>M-PROOF</span>
+                  </div>
+                  <div class="print-graphic-content" style="background: linear-gradient(135deg, rgba(243,112,33,0.1), rgba(93,45,145,0.1)); border: 1px solid rgba(243,112,33,0.2); padding: 5px;">
+                    <div class="proof-title" style="font-size: 6px; letter-spacing: 0.5px;">EST. 1996</div>
+                    <div class="proof-cmyk-blocks" style="height: 2px;"></div>
+                  </div>
+                </div>
+                <div class="laser-beam phone-laser"></div>
+
+                <div class="phone-display"></div>
+              </div>
+
+            </div><!-- /.lab-wrapper -->
+          </div><!-- /.hero-3d-lab -->
 
           <!-- Floating tech chip -->
-          <div class="hero-tech-chip" aria-hidden="true">
+          <div class="hero-tech-chip" aria-hidden="true" style="right: -40px;">
             <div class="hero-tech-chip-label">Resolution</div>
             <div class="hero-tech-chip-val">4000 DPI</div>
             <div class="hero-tech-chip-bar" style="width:90%;"></div>
@@ -450,7 +833,7 @@
             <div class="hero-tech-chip-bar" style="width:75%;"></div>
           </div>
 
-          <div class="hero-badge">
+          <div class="hero-badge" style="bottom: -28px; left: -10px;">
             <div class="hero-badge-icon"><i class="fas fa-star"></i></div>
             <div>
               <div class="hero-badge-title">99%</div>
@@ -1047,6 +1430,29 @@
         this.reset();
       }, 3000);
     });
+
+    // 3D Parallax Mouse Tracking for Interactive Devices
+    (function init3DParallax() {
+      const lab = document.getElementById('hero3dLab');
+      const wrapper = document.getElementById('labWrapper');
+      if (!lab || !wrapper) return;
+
+      lab.addEventListener('mousemove', (e) => {
+        const rect = lab.getBoundingClientRect();
+        const x = e.clientX - rect.left - rect.width / 2;
+        const y = e.clientY - rect.top - rect.height / 2;
+        
+        // Rotate container up to 15 degrees based on mouse position
+        const rotateY = (x / (rect.width / 2)) * 14;
+        const rotateX = -(y / (rect.height / 2)) * 14;
+        
+        wrapper.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+      });
+
+      lab.addEventListener('mouseleave', () => {
+        wrapper.style.transform = 'rotateX(0deg) rotateY(0deg)';
+      });
+    })();
   </script>
 
 </body>
